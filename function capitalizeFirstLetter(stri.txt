@@ -1,0 +1,471 @@
+Replacing First & Last Character of String "RAMESH RAM RAHUL"
+
+
+
+function First(str){
+    
+    let result=''
+    let start=0;
+    
+    for(let end=0;end<=str.length;end++){
+        if(end==str.length || str.charAt(end)==' '){
+            if(end -start >1){
+                result+=str.charAt(end-1);
+                for(let i=start+1;i<end-1;i++){
+                result+=str.charAt(i)
+            }
+            result+=str.charAt(start);
+            }
+            
+        
+        else{
+            for(let i=start;i<end;i++){
+                result+=str.charAt(i)
+            }
+        }
+        if(end < str.length){
+            result+=' ';
+        }
+        start=end+1;
+    }
+    }
+    return result;
+}
+console.log(First("Ramesh Ram Rahul"))
+
+
+
+
+
+
+?????????????///////////////////////////////////////////////////////////
+
+function capitalizeFirstLetterOfEachWord(string) {
+  if (string.length === 0) {
+    return string; // Return the original string if it's empty
+  }
+
+  // Split the string into words
+  let words = string.split(' ');
+
+  // Capitalize the first letter of each word
+  let capitalizedWords = words.map(word => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  });
+
+  // Join the capitalized words back into a single string
+  return capitalizedWords.join(' ');
+}
+
+// Example usage
+let result = capitalizeFirstLetterOfEachWord("hello rutul rahul");
+console.log(result); // Outputs: "Hello Rutul Rahul"
+
+????????????////////////////////////////////////\
+
+
+ Count Vowels
+
+function countVowels(str) {
+  const vowels = 'aeiouAEIOU';
+  let count = 0;
+  for (let char of str) {
+    if (vowels.includes(char)) {
+      count++;
+    }
+  }
+  return count;
+}
+
+// Example usage:
+console.log(countVowels("Angular")); // Output: 3
+
+OR 
+ Counting and Printing
+
+
+function vowels(str) {          
+    let vowels = "aeiouAEIOU";     
+    let count = 0;
+    let found = [];
+    
+    for (let char of str) {
+        if (vowels.includes(char)) {
+            count++;
+            found.push(char);
+        }
+    }
+    
+    return { count, vowels: found };
+}
+
+console.log(vowels("Angular")); // Output: { count: 3, vowels: [ 'A', 'u', 'a' ] }
+
+??//////////////////////////////////////////////////////////////////////////////////
+
+
+Vowels Non-duplicates
+
+
+function vowels(str){
+    
+   for(let char of str){
+           let count=0
+           for(let j=0;j<str.length;j++){
+               if(str[j]==char && (str[j]=='A'||str[j]=='E'||str[j]=='I'||str[j]=='O'||str[j]=='U')){
+                   count++;
+               }
+           }
+           if(count==1){
+               return char;
+           }
+       }
+       return null;
+       
+   }
+   console.log(vowels("ANGULAR"))
+
+
+
+
+??????????????????////////////////////////////////////////////////
+
+
+
+Find the Longest Word
+
+
+function longWord(str){
+    
+    let words=str.split(' ');
+    let lgtword=''
+    
+    for(let word of words){
+        if(word.length>words.length){
+            lgtword=word;
+        }
+    }
+    return lgtword
+}
+console.log(longWord("Angular is a platforms"))
+
+?//////////////////////////?????????????????????????????????//
+
+
+
+Remove Duplicate Characters
+
+function remove(str){
+    
+    let unique=''
+    
+    for(let char of str){
+        if(!unique.includes(char)){
+            unique+=char
+        }
+    }
+    return unique
+}
+console.log(remove('Sandeep'))
+
+              OR 
+Count Duplicates
+
+
+function remove(str){
+    
+    let unique=''
+    let count=0
+    
+    for(let char of str){
+        if(!unique.includes(char)){
+            unique+=char
+        }
+        else{
+            count++
+        }
+    }
+    return count;
+}
+console.log(remove('Sandeep'))
+
+
+
+
+
+
+
+???????????????////////////////////////////////////////////////////////////
+
+
+Number of Occurances of Every Character
+
+
+function occur(str){
+    
+    const occurances={}
+    
+    for(let char of str){
+        if(occurances[char]){
+            occurances[char]++;
+        }
+        else{
+            occurances[char]=1;
+        }
+    }
+    return occurances
+}
+let output=occur("Angular is a programming language");
+console.log(output)
+
+??????????????///////////////////////////////////////////
+
+Remove Special Characters;
+
+
+function rev(str){
+    
+    let special="@+)(";
+    let unique=''
+    
+    for(let char of str){
+        if(!special.includes(char)){
+            unique+=char
+        }
+    }
+    return unique;
+    
+}
+console.log(rev("se@()+nwell"))
+
+OR
+
+function rev(str) {
+    let special = "@+)(";
+    let unique = '';
+    
+    for (let i = 0; i < str.length; i++) {
+        let char = str[i];
+        let isSpecial = false;
+
+        for (let j = 0; j < special.length; j++) {
+            if (char === special[j]) {
+                isSpecial = true;
+                break;
+            }
+        }
+        
+        if (!isSpecial) {
+            unique += char;
+        }
+    }
+    return unique;
+}
+
+console.log(rev("se@()+nwell")); // Output: senwell
+
+
+
+
+
+
+
+
+???????????????/////////////////////////////////////////////
+
+Showing Duplicates:-
+
+
+function showDuplicates(str) {
+    let charCount = {}; // Initialize an object to store the count of each character
+    let duplicates = ""; // Initialize an empty string to store duplicate characters
+
+    // Loop through each character in the input string
+    for (let char of str) {
+        if (charCount[char]) { // If the character is already in the object, increment its count
+            charCount[char]++;
+        } else { // If the character is not in the object, add it with a count of 1
+            charCount[char] = 1;
+        }
+    }
+
+    // Loop through the object to find characters with a count greater than 1
+    for (let char in charCount) {
+        if (charCount[char] > 1) {
+            duplicates += char; // Add the character to the duplicates string
+        }
+    }
+
+    return duplicates; // Return the string with duplicate characters
+}
+
+console.log(showDuplicates("Sandeep")); // Output: "e"
+
+
+?????////////////////////////////////////////////////////////////////
+
+Anagram OF String
+
+
+function areAnagrams(str1,str2){
+    
+    const normalise=str=>str.toLowerCase().split('').sort().join('')
+    return normalise(str1)===normalise(str2)
+}
+console.log(areAnagrams("BINARY","BRAIN"))
+
+??????////////////////////////////////////
+
+Replace a Substring
+
+
+function replace(str,search,replace){
+    
+    return str.split(search).join(replace)
+}
+console.log(replace("Hello  angular","angular","worlds"))
+
+?///////////////////////////////////////////////
+Check for Palindrome
+
+function Palin(str){
+    
+    const reversed=str.split('').reverse().join('')
+    return str===reversed
+}
+console.log(Palin("madam"))
+
+Given Capitalised it :- Input:"javascript is fun"
+Output:'JaVaScRiPt Is Fun"
+
+function alternateCase(str) {
+  let result = '';
+  for (let i = 0; i < str.length; i++) {
+    if (i % 2 === 0) {
+      result += str[i].toUpperCase();
+    } else {
+      result += str[i].toLowerCase();
+    }
+  }
+  return result;
+}
+
+const input = "javascript is fun";
+const output = alternateCase(input);
+console.log(output); // "JaVaScRiPt Is FuN"
+
+OR
+
+const a="javascript is fun";
+let result='';
+
+for(let i=0;i<a.length;i++){
+    if(i%2==0){
+        result+=a.charAt(i).toUpperCase();
+    }
+    else{
+        result+=a.charAt(i).toLowerCase();
+        }
+}
+console.log(result)
+
+
+
+
+Given ["A", 10, "B", 20, "C", 30] sort characters and numbers
+
+const data = ["A", 10, "B", 20, "C", 30];
+const numbers = [];
+const characters = [];
+
+data.forEach(item => {
+  if (typeof item === 'number') {
+    numbers.push(item);
+  } else if (typeof item === 'string') {
+    characters.push(item);
+  }
+});
+
+console.log("Numbers: ", numbers); // [10, 20, 30]
+console.log("Characters: ", characters); // ["A", "B", "C"]
+
+
+Convert Array into Matrix
+
+// Step 1: Store the numbers in an array
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// Step 2: Convert the array into a matrix format
+const matrix = [];
+const rows = 3;
+const cols = 3;
+
+for (let col = 0; col < cols; col++) {
+  const column = [];
+  for (let row = 0; row < rows; row++) {
+    column.push(numbers[row * cols + col]);
+  }
+  matrix.push(column);
+}
+
+// Step 3: Print the matrix
+matrix.forEach(row => console.log(row.join(' ')));
+
+
+
+
+
+
+
+
+
+
+
+
+****////////Questions Senwell 13-12-24 12.20pm
+
+1) Data: [10,20,30,40,10,20]
+Find the duplicate element of the array?
+Output: [10,20]
+Note:
+No use of inbuild
+No use of sorting
+Vasundhara Gajbhiye
+12:27 PM
+2) "Given the following set of random numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9. Store these numbers into either an object or an array. Once stored, convert them into a matrix format as shown below:
+
+1   4   7
+2   5   8
+3   6   9
+Vasundhara Gajbhiye
+12:34 PM
+3) Data: ["A", 10, "B", 20, "C", 30] sort chars and numbers
+Vasundhara Gajbhiye
+12:47 PM
+4) Capitalise Input:"javascript is fun"
+Output:'JaVaScRiPt Is Fun"
+
+
+
+
+
+ 
+Remove Duplicate Characters
+Count Vowels
+Find the Longest Word
+Number of Occurances of Every Character
+Capitalise every First Character of String
+Remove Special Character"@()+="
+Find Duplicates Arrays
+Sort the arrays in Asc/Des
+Sort the String =['Pune','Goa',Ahmedabad]
+Split a String
+Check Anagram
+Replace a Substring
+Check for Palindrome
+Convert Array into Matrix
+Given ["A", 10, "B", 20, "C", 30] sort characters and numbers
+Given Capitalised it :- Input:"javascript is fun"
+Output:'JaVaScRiPt Is Fun"
+
+
